@@ -14,6 +14,7 @@ class calculator_1{
 
         System.out.println("Enter second number");
         num2 = sc.nextDouble();
+        sc.close();
 
         // logic with if conditions
         // if(operator == '/'){
@@ -37,7 +38,8 @@ class calculator_1{
         // }
 
         // using switch statement
-        switch (operator) {
+        try {
+            switch (operator) {
             case '/':
                 answer = num1 / num2;
                 System.out.println(num1 + " divided by " + num2 + " gives " + answer); 
@@ -56,9 +58,15 @@ class calculator_1{
                 break;
             
             default:
-            System.out.println("Invalid operator!");
-                break;
+            //yell at them
+            throw new NumberFormatException("Invalid input");
+             
         }
-        sc.close();
+       
+        } catch (NumberFormatException e) {
+            System.out.print("Your selection can only be an integer!");
+        }
+        
+        
     }
 }
